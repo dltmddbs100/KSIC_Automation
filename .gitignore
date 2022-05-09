@@ -1,0 +1,11 @@
+data/1. 실습용자료.txt
+
+data/2. 모델개발용자료.txt
+
+data/train_final_spacing.csv
+
+data/test_final_spacing.csv
+
+weights/
+
+log/HiBERT_RoBERTa/
