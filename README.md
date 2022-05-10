@@ -1,12 +1,13 @@
 # KSIC_Automation
-- Our natural language processing team([이승윤](https://github.com/dltmddbs100), [김일구](https://github.com/dlfrnaos19), [박범수](https://github.com/Cloud9Bumsu)) achieved 1st place in the 1st AI competition hosted by the National Statistical Office.
-- This task is classification task using KSIC(한국표준산업분류) Dataset provided by the National Statistical Office.
-- We should assine proper industry categories using natural language form.
+- 1st/395 
+- Our natural language processing team([이승윤](https://github.com/dltmddbs100), [김일구](https://github.com/dlfrnaos19), [박범수](https://github.com/Cloud9Bumsu)) achieved 1st place in the 1st AI competition hosted by the National Statistical Office
+- This task is classification task using KSIC(한국표준산업분류) Dataset provided by the National Statistical Office
+- We should assine proper industry categories using natural language form
 - You can check the article about this competititon [here](https://data.kostat.go.kr/sbchome/contents/cntPage.do?cntntsId=CNTS_000000000000575&curMenuNo=OPT_09_03_00_0)
 
 
 ## Model Process
-- The whole process consists of data cleansing, model building, and ensemble.
+- The whole process consists of data cleansing, model building, and ensemble
 
 ![프로세스 사진](https://user-images.githubusercontent.com/55730591/167529122-06e0e78e-ffea-493b-80c9-2ea6f77c2c2c.jpg)
 
@@ -32,7 +33,7 @@
 
 + **HiRoberta**
     + The data provided in the competition is classified into main, middle, and sub categories according to the Korean standard industry classification
-    + It is a hierarchical classification problem that has dependence rather than an independent relationship between labels.
+    + It is a hierarchical classification problem that has dependence rather than an independent relationship between labels
     + HiRoberta inherits information used to predict main and middle classes when predicting subcategories
     + The structure can use parent categories information in subcategory clasification, so that hierarchical characteristics can be efficiently conveyed to the model
 
