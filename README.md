@@ -6,13 +6,12 @@
 
 
 ## Model Process
+- The whole process consists of data cleansing, model building, and ensemble.
 
 ![프로세스 사진](https://user-images.githubusercontent.com/55730591/167529122-06e0e78e-ffea-493b-80c9-2ea6f77c2c2c.jpg)
 
-- The whole process consists of data cleansing, model building, and ensemble.
 
-
-### Pre-processing
+## Pre-processing
 
 + **Refine special characters, patterns, and typos**
     + All variables consist of natural language form
@@ -25,7 +24,7 @@
     + Forced spacing using Regex and [QuickSpacer](https://github.com/cosmoquester/quickspacer) library
     + This makes huge increase in model performance
 
-### Modeling
+## Modeling
 + **Pre-training Models**
     + [klue/roberta-large](https://huggingface.co/klue/roberta-large)
     + Tried various models like electra, bert, bigbird but roberta was best
@@ -43,7 +42,7 @@
     + Using TPU in Google Colab with high speed
 
 
-### Training & Inference Strategy
+## Training & Inference Strategy
 
 | Model | HiRoberta | Flat Roberta |
 | --- | --- | --- |
@@ -61,7 +60,7 @@
 | Callback | EarlyStop(Acc max) | EarlyStop(Val loss min) |
 
 
-+ In HiRoberta Transform the composition of the loss function in consideration of the designed model characteristics and the competition evaluation formula (main: middle: sub = 1:2:7)
++ In HiRoberta, we transform the composition of the loss function in consideration of the designed model characteristics and the competition evaluation formula (main: middle: sub = 1:2:7)
 + Due to imbalanced labels, apply Stratified K-fold strategy and ensemble
 + Finally, ensemble two different 5-fold models and make inference
 
