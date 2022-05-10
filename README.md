@@ -7,7 +7,7 @@
 
 ## Model Process
 
-<img src="https://user-images.githubusercontent.com/55730591/167528884-3b160c42-616a-4cc9-8665-452c6b749899.jpg" width="560" height="350"/>
+![프로세스 사진](https://user-images.githubusercontent.com/55730591/167529122-06e0e78e-ffea-493b-80c9-2ea6f77c2c2c.jpg)
 
 - The whole process consists of data cleansing, model building, and ensemble.
 
