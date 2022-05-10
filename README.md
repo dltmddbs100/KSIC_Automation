@@ -1,6 +1,6 @@
 # KSIC_Automation
-- 1st/395 
-- Our natural language processing team([이승윤](https://github.com/dltmddbs100), [김일구](https://github.com/dlfrnaos19), [박범수](https://github.com/Cloud9Bumsu)) achieved 1st place in the 1st AI competition hosted by the National Statistical Office
+-  **1st/395** :1st_place_medal:
+- **Our natural language processing team([이승윤](https://github.com/dltmddbs100), [김일구](https://github.com/dlfrnaos19), [박범수](https://github.com/Cloud9Bumsu)) achieved 1st place in the 1st AI competition hosted by the National Statistical Office**
 - This task is classification task using KSIC(한국표준산업분류) Dataset provided by the National Statistical Office
 - We should assine proper industry categories using natural language form
 - You can check the article about this competititon [here](https://data.kostat.go.kr/sbchome/contents/cntPage.do?cntntsId=CNTS_000000000000575&curMenuNo=OPT_09_03_00_0)
@@ -59,7 +59,6 @@
 | Optimizer | AdamW(weight_decay=1e-2) | Adam |
 | Loss | Custom CrossEntropy | CrossEntropy |
 | Callback | EarlyStop(Acc max) | EarlyStop(Val loss min) |
-
 
 + In HiRoberta, we transform the composition of the loss function in consideration of the designed model characteristics and the competition evaluation formula (main: middle: sub = 1:2:7)
 + Due to imbalanced labels, apply Stratified K-fold strategy and ensemble
