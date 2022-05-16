@@ -31,28 +31,27 @@
     + Tried various models like electra, bert, bigbird but roberta was best
     + Based on this pre-training model, we build to different models
 
-+ **HiRoberta**
-    + The data provided in the competition is classified into main, middle, and sub categories according to the Korean standard industry classification
++ **HiRoBERTa**
+    + The data provided in the competition is classified into main, middle, and sub categories according to the Korean Standard Industry Classification
     + It is a hierarchical classification problem that has dependence rather than an independent relationship between labels
-    + HiRoberta inherits information used to predict main and middle classes when predicting subcategories
+    + HiRoBERTa inherits information used to predict main and middle classes when predicting subcategories
     + The structure can use parent categories information in subcategory clasification, so that hierarchical characteristics can be efficiently conveyed to the model
 
-+ **Flat Roberta**
++ **Flat RoBERTa**
     + Simple linear classification model only focus on subcategories
-    + Roberta - linear layer - softmax 
+    + RoBERTa - linear layer - softmax 
     + Using TPU in Google Colab with high speed
 
 
 ## Training & Inference Strategy
 
-| Model | HiRoberta | Flat Roberta |
+| Model | HiRoBERTa | Flat RoBERTa |
 | --- | --- | --- |
 | CPU | Intel(R) Xeon(R) CPU | Intel(R) Xeon(R) CPU |
 | Tensor | Colab P100 | Colab TPU V2 |
 | Training latency(5-folds)               | 36 hours | 2.5 hours |
-| Inference latency(5-folds)            | 20 min | 25min |
+| Inference latency(5-folds)            | 20 min | 25 min |
 | Pre-trained model | klue/roberta-large | klue/roberta-large |
-| Inference latency            | 20 min | 25min |
 | Epoch | 4 | 4 |
 | Batch size | 64 | 64(Global batch 512) |
 | Learning rate | 2e-5, CosineAnnealing(T=4) | [3e-5, 2e-5, le-5, 5e-6] |
@@ -60,7 +59,7 @@
 | Loss | Custom CrossEntropy | CrossEntropy |
 | Callback | EarlyStop(Acc max) | EarlyStop(Val loss min) |
 
-+ In HiRoberta, we transform the composition of the loss function in consideration of the designed model characteristics and the competition evaluation formula (main: middle: sub = 1:2:7)
++ In HiRoBERTa, we transform the composition of the loss function in consideration of the designed model characteristics and the competition evaluation formula (main: middle: sub = 1:2:7)
 + Due to imbalanced labels, apply Stratified K-fold strategy and ensemble
 + Finally, ensemble two different 5-fold models and make inference
 
