@@ -1,5 +1,5 @@
 # KSIC_Automation
--  **1st/395** :1st_place_medal:
+-  **1st / 395 Teams** :1st_place_medal:
 - **Our natural language processing team([이승윤](https://github.com/dltmddbs100), [김일구](https://github.com/dlfrnaos19), [박범수](https://github.com/Cloud9Bumsu)) achieved 1st place in the 1st AI competition hosted by the National Statistical Office**
 - This is a classification task using KSIC(한국표준산업분류) Dataset provided by the National Statistical Office
 - We should assine proper industry categories using natural language form
@@ -64,4 +64,66 @@
 + Finally, ensemble two different 5-fold models and make inference
 
 
+## Installation
+```
+!https://github.com/dltmddbs100/KSIC_Automation.git
+!pip install transformers
+!pip install tensorboard
+!pip install quickspacer
+cd /content/SimCSE/
+```
 
+## Getting Started HiRoBERTa
+**Make dataset to 'data' directory from raw data.** <br/>
+Raw datasets are not provided in this repository due to security issues. <br/>
+:exclamation: Caution : Only those who have participated in the contest and have data can run it.
+```python
+# Make processed datasets
+# This code will yeild 'train_final_spacing' and 'test_final_spacing'
+!python data/preprocess.py
+```
+
+## Training HiRoBERTa Model
+Training 5-fold models <br/>
+```python
+# 2. Train
+!python main.py --train 'True'
+                --model_name : 'klue/roberta-large'
+                --weight_path : 'weights/'
+                --sub_path : 'sub/'
+                --path_to_train_data : 'data/train_final_spacing.csv'
+                --path_to_test_data : 'data/test_final_spacing.csv'
+                --device : 'cuda'
+                --batch_size : 64
+                --max_epochs : 4
+                --max_len : 35
+                --learning_rate : 2e-05
+                --weight_decay : 0.01
+                --dropout : 0.1
+                --Tmax : 4
+                --digit_1_class : 19
+                --digit_2_class : 74
+                --digit_3_class : 225 
+```
++ `--train`: If you want to train the model, it should be 'True' while test argument is 'False'.
++ `--model_name`: The name or path of a transformers-based pre-trained checkpoint (default: klue/bert-base)
++ `--weight_path`: The place where your trained weights are saved.
++ `--device`: Supports 'cuda' or 'cpu'.
++ `--Tmax`: Maximum number of iterations in CosineAnnealingLR. 
++ `--digit_1_class`: Number of the main categories label.
++ `--digit_2_class`: Number of the middle categories label.
++ `--digit_3_class`: Number of the sub categories label.
+
+
+## Training HiRoBERTa Model
+Inference with 5-fold models, make and save average ensemble logits <br/>
+Finally, startified ensemble logit file is saved in 'output' directory <br/>
+```python
+# 3.Inference
+!python main.py --train 'False'
+```
+
+## Training Flat RoBERTa & Final Ensemble Inference
+You can train standard RoBERTa model in `TF_roberta_large_skf&ensemble.ipynb` <br/>
+At the end of this code, it loads HiRoBERTa's logits and ensemble with Flat RoBERTa which leads to submission file <br/>
+By considering the hierarchical and horizontal characteristics of dataset at the same time, model can have a multi-faceted perspective in classification
