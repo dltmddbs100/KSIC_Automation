@@ -66,7 +66,7 @@
 
 ## Installation
 ```
-!https://github.com/dltmddbs100/KSIC_Automation.git
+!git clone https://github.com/dltmddbs100/KSIC_Automation.git
 !pip install transformers
 !pip install tensorboard
 !pip install quickspacer
@@ -78,8 +78,8 @@ cd /KSIC_Automation/
 Raw datasets are not provided in this repository due to security issues. <br/>
 :exclamation:Caution : Only those who have participated in the contest and have data can run it.
 ```python
-# Make processed datasets
-# This code will yield 'train_final_spacing' and 'test_final_spacing'
+# 1. Make processed datasets
+# This code yield 'train_final_spacing' and 'test_final_spacing'
 !python data/preprocess.py
 ```
 
