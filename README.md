@@ -39,7 +39,7 @@
 
 + **Flat RoBERTa**
     + Simple linear classification model only focus on subcategories
-    + RoBERTa - linear layer - softmax 
+    + RoBERTa - Linear layer - Softmax 
     + Using TPU in Google Colab with high speed
 
 
@@ -59,7 +59,7 @@
 | Loss | Custom CrossEntropy | CrossEntropy |
 | Callback | EarlyStop(Acc max) | EarlyStop(Val loss min) |
 
-+ In HiRoBERTa, we transform the composition of the loss function in consideration of the designed model characteristics and the competition evaluation formula (main: middle: sub = 1:2:7)
++ **In HiRoBERTa, we transform the composition of the loss function in consideration of the designed model characteristics and the competition evaluation formula (main: middle: sub = 1:2:7)**
 + Due to imbalanced labels, apply Stratified K-fold strategy and ensemble
 + Finally, ensemble two different 5-fold models and make inference
 
@@ -70,21 +70,21 @@
 !pip install transformers
 !pip install tensorboard
 !pip install quickspacer
-cd /content/SimCSE/
+cd /KSIC_Automation/
 ```
 
 ## Getting Started HiRoBERTa
 **Make dataset to 'data' directory from raw data.** <br/>
 Raw datasets are not provided in this repository due to security issues. <br/>
-:exclamation: Caution : Only those who have participated in the contest and have data can run it.
+:exclamation:Caution : Only those who have participated in the contest and have data can run it.
 ```python
 # Make processed datasets
-# This code will yeild 'train_final_spacing' and 'test_final_spacing'
+# This code will yield 'train_final_spacing' and 'test_final_spacing'
 !python data/preprocess.py
 ```
 
 ## Training HiRoBERTa Model
-Training 5-fold models <br/>
+**Training 5-fold models** <br/>
 ```python
 # 2. Train
 !python main.py --train 'True'
@@ -116,7 +116,7 @@ Training 5-fold models <br/>
 
 
 ## Training HiRoBERTa Model
-Inference with 5-fold models, make and save average ensemble logits <br/>
+**Inference with 5-fold models, make and save average ensemble logits** <br/>
 Finally, startified ensemble logit file is saved in 'output' directory <br/>
 ```python
 # 3.Inference
@@ -124,6 +124,6 @@ Finally, startified ensemble logit file is saved in 'output' directory <br/>
 ```
 
 ## Training Flat RoBERTa & Final Ensemble Inference
-You can train standard RoBERTa model in `TF_roberta_large_skf&ensemble.ipynb` <br/>
-At the end of this code, it loads HiRoBERTa's logits and ensemble with Flat RoBERTa which leads to submission file <br/>
-By considering the hierarchical and horizontal characteristics of dataset at the same time, model can have a multi-faceted perspective in classification
++ You can train standard RoBERTa model in `TF_roberta_large_skf&ensemble.ipynb` <br/>
++ At the end of this code, it loads HiRoBERTa's logits and ensemble with Flat RoBERTa which leads to submission file <br/>
++ By considering the hierarchical and horizontal characteristics of dataset at the same time, model can have a multi-faceted perspective in classification
