@@ -73,7 +73,7 @@
 cd /KSIC_Automation/
 ```
 
-## Getting Started HiRoBERTa
+## Getting Started
 **Make dataset to 'data' directory from raw data.** <br/>
 Raw datasets are not provided in this repository due to security issues. <br/>
 :exclamation:Caution : Only those who have participated in the contest and have data can run it.
@@ -108,14 +108,14 @@ Raw datasets are not provided in this repository due to security issues. <br/>
 + `--train`: If you want to train the model, it should be 'True' while test argument is 'False'.
 + `--model_name`: The name or path of a transformers-based pre-trained checkpoint (default: klue/bert-base)
 + `--weight_path`: The place where your trained weights are saved.
-+ `--device`: Supports 'cuda' or 'cpu'.
++ `--device`: Supports 'cuda' or 'cpu' (recommand 'cuda')
 + `--Tmax`: Maximum number of iterations in CosineAnnealingLR. 
-+ `--digit_1_class`: Number of the main categories label.
-+ `--digit_2_class`: Number of the middle categories label.
-+ `--digit_3_class`: Number of the sub categories label.
++ `--digit_1_class`: Number of the main categories labels
++ `--digit_2_class`: Number of the middle categories labels
++ `--digit_3_class`: Number of the sub categories labels
 
 
-## Training HiRoBERTa Model
+## Inference
 **Inference with 5-fold models, make and save average ensemble logits** <br/>
 Finally, startified ensemble logit file is saved in 'output' directory <br/>
 ```python
